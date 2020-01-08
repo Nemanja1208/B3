@@ -1,0 +1,15 @@
+﻿<!-- Using HomeViewModel-->
+@model HomeViewModel
+<!-- We are using the Slider (partial View) on the home page-->
+<partial name="_Carousel" />
+
+<div class="row">
+    <!-- We are listing out all the pastries with the Partial View of PastryListItems-->
+    @foreach (var pastry in Model.Pastries)
+    {
+        <partial name="_PastryListItems" model="pastry" />
+    }
+</div>
+<div class="text-center">
+    <a class="btn btn-primary" asp-controller="Comment" asp-action="CheckOutComment">Leave a comment !</a>
+</div>

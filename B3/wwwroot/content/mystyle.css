@@ -1,0 +1,41 @@
+﻿body {
+    background: linear-gradient(to right, #c04848, #480048);
+    min-height: 100vh;
+    color: black;
+    text-align: center;
+}
+
+.text-muted {
+    color: black !important;
+}
+
+.carousel-item {
+    height: 800px;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    background-size: cover;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.p-5 {
+    text-align: center;
+}
+
+form-horizontal {
+    margin-top: 80px !important;
+}
+
+.form-horizontal {
+    margin-top: 80px !important;
+}
+
+form {
+    margin-top: 90px !important;
+}
+
+.form {
+    margin-top: 90px !important;
+}

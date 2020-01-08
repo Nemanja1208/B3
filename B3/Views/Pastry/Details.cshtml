@@ -1,0 +1,29 @@
+﻿<!-- Model for this View is Pastry-->
+@model Pastry
+<!-- Layout for the Details Page-->
+<h2>@Model.Name</h2>
+<div class="container">
+    <div class="card border-0 shadow my-5">
+        <div class="card-body p-5">
+            <div class="thumbnail">
+                <img alt="@Model.Name" src="@Model.ImageUrl">
+                <div class="caption-full">
+                    <h3 class="pull-right">@Model.Category</h3>
+                    <h3>
+                        <a href="#">@Model.Name</a>
+                    </h3>
+                    <h4>@Model.Description</h4>
+                    <h1>Comments :</h1>
+                    <div class="comment-section">
+                        @{
+                            await Html.RenderPartialAsync("_MainComment", new CommentViewModel { PastryId = Model.PastryId, MainCommentId = 0 });}
+                        @foreach (var c in Model.MainComments)
+                        {
+                            <h3> @c.Message --- @c.Created</h3>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

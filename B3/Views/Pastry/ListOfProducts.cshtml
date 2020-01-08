@@ -1,0 +1,23 @@
+﻿@model PastryListViewModel
+
+<!-- List Of Products.cshtml does not require <html> and head,body tags, since it is rendered in _Layout -->
+<!-- ListOfProducts must point to the _Layout , we use View Start file-->
+<div class="container py-5">
+ <div class="row text-center text-white mb-5">
+  <div class="col-lg-7 mx-auto">
+   <h1 class="display-4">Product List</h1>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-lg-8 mx-auto">
+<!-- List group-->
+   <ul class="list-group shadow">
+    <!--Looping over PiesListViewModel . Pastries-->
+    @foreach (var pastries in Model.Pastries)
+     {
+       <partial name="_PastryListItems" model="pastries" />
+     }
+   </ul> <!-- End -->
+  </div>
+ </div>
+</div>
