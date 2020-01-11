@@ -1,0 +1,7 @@
+﻿<!--Here we are calling the Partial View from the Pastry/Details View in order to show the comments messages-->
+@model Comment
+
+<!--Showing just the text and the rating that user gave-->
+<div class="col"><h2>@Model.CommentMessage</h2></div>
+
+<div><h6>The customer gave this Pastry a rating @Model.Rating</h6></div>

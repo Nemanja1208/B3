@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace B3.Models
 {
-    //Inherits from DBContext class
-    public class AppDbContext : DbContext
+    //Inherits from DBContext class first, 
+    //But now from IdentityDbContext (base class) in order to use with IdentityUser(represents User in Identity)
+    //And capture user information
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         // Must have an instance of DB Context Options in order to work, and we use this constructor
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -18,8 +22,8 @@ namespace B3.Models
         //Which entity we need to manage --->
         public DbSet<Pastry> Pastries { get; set; }
         public DbSet<PastryCategory> Categories { get; set; }
-        public DbSet<MainComment> MainComments { get; set; }
-        public DbSet<SubComment> SubComments { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
 
         //Method for populating the Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)

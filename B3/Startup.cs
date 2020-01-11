@@ -6,6 +6,7 @@ using B3.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,16 +33,23 @@ namespace B3
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            //Bringing functionality for working with Identity using Entity
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
+
             //Register repositories in order to use them
             //Mock repositories before we implement database
             //services.AddScoped<IPastryRepository, MockPastryRepository>();
             //services.AddScoped<IPastryCategoryRepository, MockPastryCategoryRepository>();
             services.AddScoped<IPastryRepository, PastryRepository>();
             services.AddScoped<IPastryCategoryRepository, PastryCategoryRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
 
 
             //Adding support for working with MVC 
             services.AddControllersWithViews();
+
+            //Adding support for Razor Pages from Identity
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,12 +72,22 @@ namespace B3
             //With Use Routing and Use EndPoints we enable the MVC to respond to incoming requests (mapping request)
             app.UseRouting();
 
+            //Enable to authenticate using Identity
+            app.UseAuthentication();
+
+            //Enabling Authorization for only our logged-in user to use specific parts and functions off our app
+            app.UseAuthorization(); 
+
+
             app.UseEndpoints(endpoints =>
             {
                 //Mapping incoming request with action on a controller
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                //Adding an endpoint in order to work with Identity and read our RazorPages
+                endpoints.MapRazorPages();
             });
         }
     }

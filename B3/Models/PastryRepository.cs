@@ -27,32 +27,10 @@ namespace B3.Models
             }
         }
 
-        //Getting Pie by ID and including Main and SubComments
+        //Getting Pastry by Pastry ID 
         public Pastry GetPastryById(int PastryId)
         {
-            return _appDbContext.Pastries.Include(p => p.MainComments).ThenInclude(mc => mc.SubComments).FirstOrDefault(p => p.PastryId == PastryId);
-        }
-
-        //Updating a Pastry with Comments
-        public void UpdatePastry(Pastry pastry)
-        {
-            _appDbContext.Pastries.Update(pastry);
-        }
-
-        //Adding Comment
-        public void AddSubComment(SubComment comment)
-        {
-            _appDbContext.SubComments.Add(comment);
-        }
-
-        //ASYNC that commits changes to database
-        public async Task<bool> SaveChangesAsync()
-        {
-            if(await _appDbContext.SaveChangesAsync() > 0)
-            {
-                return true;
-            }
-            return false;
+            return _appDbContext.Pastries.FirstOrDefault(p => p.PastryId == PastryId);
         }
     }
 }

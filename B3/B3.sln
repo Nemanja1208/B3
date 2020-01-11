@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B3", "B3.csproj", "{30E0E5CE-75C0-43C3-9847-D90A46F55D5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "B3", "B3.csproj", "{30E0E5CE-75C0-43C3-9847-D90A46F55D5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PastryApp.Tests", "..\PastryApp.Tests\PastryApp.Tests.csproj", "{F7D5C9DF-8F57-4BDD-B515-42682C9DF7CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PastryAppTest", "..\PastryAppTest\PastryAppTest.csproj", "{8BACB411-2DEF-43C1-871C-2159A2538500}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{30E0E5CE-75C0-43C3-9847-D90A46F55D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30E0E5CE-75C0-43C3-9847-D90A46F55D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30E0E5CE-75C0-43C3-9847-D90A46F55D5B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F7D5C9DF-8F57-4BDD-B515-42682C9DF7CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F7D5C9DF-8F57-4BDD-B515-42682C9DF7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F7D5C9DF-8F57-4BDD-B515-42682C9DF7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F7D5C9DF-8F57-4BDD-B515-42682C9DF7CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BACB411-2DEF-43C1-871C-2159A2538500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BACB411-2DEF-43C1-871C-2159A2538500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BACB411-2DEF-43C1-871C-2159A2538500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BACB411-2DEF-43C1-871C-2159A2538500}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

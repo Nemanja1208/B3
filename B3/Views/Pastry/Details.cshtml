@@ -1,29 +1,93 @@
-﻿<!-- Model for this View is Pastry-->
-@model Pastry
+﻿<!-- Model for this View is PastryDetailViewModel which holds properties of Pastry and All Comments -->
+
+@model PastryDetailViewModel
+
 <!-- Layout for the Details Page-->
-<h2>@Model.Name</h2>
+
+<!--Name of the Pastry-->
+<h2>@Model.PastryDetails.Name</h2>
 <div class="container">
     <div class="card border-0 shadow my-5">
         <div class="card-body p-5">
             <div class="thumbnail">
-                <img alt="@Model.Name" src="@Model.ImageUrl">
+
+<!--Here we have the image of the Pastry-->
+                <img alt="@Model.PastryDetails.Name" src="@Model.PastryDetails.ImageUrl">
                 <div class="caption-full">
-                    <h3 class="pull-right">@Model.Category</h3>
+
+ <!--Here we have the Category of the Pastry-->
+                    <h3 class="pull-right">@Model.PastryDetails.Category</h3>
                     <h3>
-                        <a href="#">@Model.Name</a>
+
+<!--Here we have the link to the Pastry in name-->
+                        <a href="#">@Model.PastryDetails.Name</a>
                     </h3>
-                    <h4>@Model.Description</h4>
-                    <h1>Comments :</h1>
-                    <div class="comment-section">
-                        @{
-                            await Html.RenderPartialAsync("_MainComment", new CommentViewModel { PastryId = Model.PastryId, MainCommentId = 0 });}
-                        @foreach (var c in Model.MainComments)
+<!--Here we have the Description of the Pastry-->
+                    <h4>@Model.PastryDetails.Description</h4>
+
+
+<!--Here we start working with the Comments -->
+
+                    <h1>Reviews of our valued customers :</h1>
+
+<!--If the List of All the Comments is not empty than we show comments-->
+                    @if (Model.Comments.Count > 0)
+                    {
+                        @foreach (var comment in Model.Comments)
                         {
-                            <h3> @c.Message --- @c.Created</h3>
+<!--Here we are calling the Partial with the tag helper which holds the Message of the Comments-->
+                            <partial name="_CommentPartial" model="comment" />
                         }
+
+                    }
+<!--If the List has Comments as well then we can calculate the Average and show it under all the comments-->
+                    @if (Model.Comments.Count > 0)
+                    {
+                        var average = Model.Comments.Sum(comment => comment.Rating) / Model.Comments.Count();
+                        <h3>Average Rating <span class="glyphicon glyphicon-star-empty"></span></h3>
+                        <h1>@average</h1>
+                    }
+
+<!--FORM-->
+<!--Here we implement the form-->
+                    <div class="container">
+                        <form method="post" class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <div class="col">
+                                    <h2>Leave your review & Give this Pastry a rating</h2>
+                                    <input name="text" class="form-control" placeholder="Write your comment here" />
+                                </div>
+                            </div>
+<!--Submit button and Action-->
+                            <div class="form-group">
+                                <div class="col">
+                                    <h4>Rating</h4>
+                                    <input name="Rating" style="width:260px" type="number" min="1" max="5" placeholder="Leave a rating (between 1 and 5)" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col">
+                                    <input type="submit" asp-controller="Pastry" asp-action="Comment" asp-route-id="@Model.PastryDetails.PastryId" asp-route-text="text" asp-route-rating="Rating" class="btn btn-primary" placeholder="Submit your comment" />
+                                </div>
+                            </div>
+                        </form>
+
+<!--Trying out something-->
+                        @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-5">
+                    <input type="submit" name="text" asp-controller="Pastry" asp-action="Comment" asp-route-id="@Model.PastryDetails.PastryId" asp-route-text="text" class="btn btn-primary" placeholder="Submit the Comment" />
+                </div>
+            </div>*@
+
+                        @*@{
+                await Html.RenderPartialAsync("_MainComment", new Pastry { PastryId = Model.PastryDetails.PastryId});}
+            @foreach (var c in Model.Comments)
+            {
+                <h3> @c.CommentMessage --- @c.Created</h3>
+            }*@
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+ </div>

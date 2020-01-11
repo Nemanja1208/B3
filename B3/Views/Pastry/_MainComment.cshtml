@@ -1,10 +1,15 @@
-﻿@model CommentViewModel
+﻿@model B3.Models.Comment
 
 <div>
+<!--Form for Submiting the Comment-->
     <form method="post" asp-controller="Pastry" asp-action="Comment">
         <input asp-for="PastryId" type="hidden"/>
-        <input asp-for="MainCommentId" type="hidden"/>
-        <input asp-for="Message"/>
-        <button type="submit">Comment</button>
+        <input asp-for="CommentId" type="hidden" />
+        <input asp-for="CommentMessage" />
+        @*<input value="" placeholder="From 1 to 10" type="number" min="1" max="10" asp-for="r" />*@
+        <button type="submit"  
+                asp-controller="Pastry" asp-action="Comment"
+                asp-route-id="@Model.PastryId"
+                asp-route-text="Text">Comment</button>
     </form>
 </div>

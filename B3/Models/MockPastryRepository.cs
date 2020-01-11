@@ -21,30 +21,16 @@ namespace B3.Models
             };
 
         //Get all Pastries
-        public IEnumerable<Pastry> AllPastriez { get; }
+       // public IEnumerable<Pastry> AllPastriez { get; }
 
-        public void AddSubComment(MainComment SubComment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddSubComment(SubComment SubComment)
-        {
-            throw new NotImplementedException();
-        }
 
         //Small implementation of GetPastryById
         public Pastry GetPastryById(int pastryId)
         {
-            return AllPastriez.FirstOrDefault(p => p.PastryId == pastryId);
+            return AllPastries.FirstOrDefault(p => p.PastryId == pastryId);
         }
 
         public Task<bool> SaveChangesAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdatePastry(Pastry pastry)
         {
             throw new NotImplementedException();
         }

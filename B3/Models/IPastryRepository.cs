@@ -10,8 +10,5 @@ namespace B3.Models
     {
         IEnumerable<Pastry> AllPastries { get; }
         Pastry GetPastryById(int PastryId);
-        void UpdatePastry(Pastry pastry);
-        void AddSubComment(SubComment comment);
-        Task<bool> SaveChangesAsync();
     }
 }

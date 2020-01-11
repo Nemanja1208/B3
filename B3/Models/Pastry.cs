@@ -7,6 +7,7 @@ namespace B3.Models
 {
     public class Pastry
     {
+        //Pastry Properties
         public int PastryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -16,8 +17,5 @@ namespace B3.Models
 
         //Pastry has a category , so we create a category class
         public PastryCategory Category { get; set; }
-
-        //Adding a list of Main Comments
-        public List<MainComment> MainComments { get; set; }
     }
 }
